@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <conio.h>
 
 
 #pragma execution_character_set("utf-8")
@@ -31,11 +32,11 @@ int datagrille[10][10] = {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//probleme affichage f5
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 3, 0}
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 
 };
 
@@ -61,36 +62,6 @@ int affgrille(int hauteur, int largeur) {
         case 3:
             printf("%c", SC);
             break;
-    }
-}
-
-void num(int cotes) {
-    for (int i = 0; i <= cotes; i++) {
-        while (i <= 9) {     // afficher les premier 9 numero
-            int nb;
-            nb = i + 49;
-            printf("  %c ", nb);
-
-        }
-        if (i >= 10) {
-            int nb1 = i + 49; //valeur des dizaine
-            int nb2 = 48; // valeur des unitée
-            int compteur = 1;
-
-            for (int k = 0; k <= cotes + 8; k++) {
-                if (compteur == 10) {   //si les unité sont a 11 on les met a 0 et on fait + 1 au dizaine
-                    compteur = 0;
-                    nb2 = 0;
-                    nb1 = nb1 + 1;
-                }
-                compteur = compteur + 1;
-                printf(" %c%c ", nb1, nb2);
-                nb2 = nb2 + 1;
-
-            }
-
-
-        }
     }
 }
 
@@ -121,7 +92,7 @@ int mid(int cotes, int i, int ligne) {
     affgrille(ligne, a);
     printf(" %c", SVSB);
 
-}           // │   │   │
+}         // │   │   │
 
 void midmid(int cotes) {
     printf("\n   %c", SVLB);
@@ -150,15 +121,15 @@ void grille(int Cotes) {
         k = j;
     }
 
-    mid(Cotes, j, k);///OK
+    mid(Cotes, j, k+1);///OK
     bootom(Cotes); ///OK
     printf("\n");
 }
 
 
-void Aide() {
-    SetConsoleOutputCP(65001);
+int Aide() {
     grille(cote);
+    SetConsoleOutputCP(65001);
     printf("Bonjours je suis l'aide de ce jeu.\n");
     printf("Vous aller jouer à la bataille navale. \n"
            "Vous avez demandé l’aide.\n"
@@ -167,7 +138,10 @@ void Aide() {
            "Pour tirer veuillez avoir posé vos 9 « bout » de bateau. Une fois ceci fait dite au programme une case tell : C5 et faite entrer.\n"
            "Une fois que vous voyez s’afficher : Touché c’est que vous avez touché un bateau, chercher alors autour pour pouvoir lui faire sa fête.\n"
            "Une fois tous les bateaux couler vous avez gagné.\n");
-    printf("Voulez vous afficher le menu ? (0 = oui / 1 = non)");
+    printf("Appuyer sur une touche pour afficher le menu.");
+    int Qmenu;
+    Qmenu=_getch();
+    return Qmenu;
 }
 
 int main() {
@@ -176,24 +150,25 @@ int main() {
     int Qmenu = 9;
     printf("Bonjour, voulez-vous afficher l'aide ?\n");
     do {
-        printf("0 = oui, 1 = non");
+        printf("0 = OUI, 1 = NON");
         scanf("%d", &aide);
+
         if (aide != 1 && aide != 0) {//si pas un ou deux redemande
+            system("cls");
             printf("Ce n'est pas une réponse valable...\n");
         }
     } while (aide != 1 && aide != 0);
 
     if (aide == 0) {//Affiche l'aide via une fonction
+        system("cls");
         Aide();
-        scanf("%d", &Qmenu);
+        menu();
     } else if (aide == 1) {
+        system("cls");
         printf("D'accord vous savez joué.\n"); //sort de l'aide et charge le menu
-
-
     }
-    if (Qmenu == 1) {
 
-    }
 
     return 0;
 }
+
