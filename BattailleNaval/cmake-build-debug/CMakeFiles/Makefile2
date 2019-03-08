@@ -58,10 +58,10 @@ RM = "C:\Program Files (x86)\CLion\bin\cmake\win\bin\cmake.exe" -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval
+CMAKE_SOURCE_DIR = C:\Users\Benoit.PIERREHUMBERT\Documents\GitHub\Batan\BattailleNaval
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\Benoit.PIERREHUMBERT\Documents\GitHub\Batan\BattailleNaval\cmake-build-debug
 
 #=============================================================================
 # Target rules for target CMakeFiles/BattailleNaval.dir
@@ -70,7 +70,7 @@ CMAKE_BINARY_DIR = C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval\c
 CMakeFiles/BattailleNaval.dir/all:
 	$(MAKE) -f CMakeFiles\BattailleNaval.dir\build.make CMakeFiles/BattailleNaval.dir/depend
 	$(MAKE) -f CMakeFiles\BattailleNaval.dir\build.make CMakeFiles/BattailleNaval.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target BattailleNaval"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Benoit.PIERREHUMBERT\Documents\GitHub\Batan\BattailleNaval\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target BattailleNaval"
 .PHONY : CMakeFiles/BattailleNaval.dir/all
 
 # Include target in all.
@@ -80,9 +80,9 @@ all: CMakeFiles/BattailleNaval.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/BattailleNaval.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Benoit.PIERREHUMBERT\Documents\GitHub\Batan\BattailleNaval\cmake-build-debug\CMakeFiles 2
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/BattailleNaval.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Benoit.PIERREHUMBERT\Desktop\GitHub\BattailleNaval\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Benoit.PIERREHUMBERT\Documents\GitHub\Batan\BattailleNaval\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/BattailleNaval.dir/rule
 
 # Convenience name for target.

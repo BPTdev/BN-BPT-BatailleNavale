@@ -6,7 +6,9 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Benoit.PIERREHUMBERT/Desktop/GitHub/BattailleNaval/main.c
+C:/Users/Benoit.PIERREHUMBERT/Documents/GitHub/Batan/BattailleNaval/main.c
 stdio.h
+-
+windows.h
 -
 
