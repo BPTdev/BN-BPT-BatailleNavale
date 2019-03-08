@@ -37,7 +37,7 @@ void Aide(){
            "Il faut dire au programme A1 et appuyer sur entrer puis taper B1 et appuyer sur entrer. Si vous n’avez pas mis un nombre correct de case à votre bateau (2,3,4) vous ne pourrez pas placer le suivant.\n"
            "Pour tirer veuillez avoir posé vos 9 « bout » de bateau. Une fois ceci fait dite au programme une case tell : C5 et faite entrer.\n"
            "Une fois que vous voyez s’afficher : Touché c’est que vous avez touché un bateau, chercher alors autour pour pouvoir lui faire sa fête.\n"
-           "Une fois tous les bateaux couler vous avez gagné.");
+           "Une fois tous les bateaux couler vous avez gagné.\n");
     printf("Voulez vous afficher le menu ? (0 = oui / 1 = non)");
 }
 
@@ -54,7 +54,7 @@ void grille() {
 int main() {
     SetConsoleOutputCP(65001);
     int aide = 0;
-    int Qmenu = 1;
+    int Qmenu = 9;
     printf("Bonjours, voulez-vous afficher l'aide ?\n");
     do {
         printf("0 = oui, 1 = non");
@@ -71,6 +71,9 @@ int main() {
         printf("D'accord vous savez joué."); //sort de l'aide et charge le menu
         menu;
     }
-    if
+    if (Qmenu==1){
+        menu;
+    }
+
     return 0;
 }
