@@ -1,4 +1,3 @@
-# Batan
 ## Bataille navale de Benoit CPNV 2018-2019
 ##### La	date	butoir	de	livraison	est	le	vendredi	7	Avril	2019.
 ##### Le	code	source	est	à	jour	(via	Github)	au	moins	à	chaque	fin	de	session.
