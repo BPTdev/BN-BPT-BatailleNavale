@@ -12,7 +12,7 @@ Bataille navale de Benoit CPNV 2018-2019
 
 
 ## DESCRIPTIF DU PROJET
-####Généralités
+#### Généralités
 ##### Ce module MA-20 a pour objectifs d'entraîner les étudiants à la réalisation de projet de type développement.
 ####	Fonctionnalités minimales
 ##### Le type d’application C demandé doit offrir les fonctionnalités minimales suivantes :
