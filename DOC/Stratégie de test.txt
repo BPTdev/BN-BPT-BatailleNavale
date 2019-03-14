@@ -1,0 +1,12 @@
+Stratégie de test
+
+Les tests seront fait sur ma machine et celle d'un camarade,
+elles sont toute deux sous Window 10.
+
+Je préparerait au préalable 3 grilles de bateaux préplacer.
+
+Pour nos tests nous utiliserons une machine Windows 10 avec le programme ouvert
+dans l'invite de commande.
+
+Un camarade m'aidera à faire mes tests pour relever un bogue que j'aurais
+oublié.
