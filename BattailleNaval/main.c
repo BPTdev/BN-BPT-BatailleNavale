@@ -1,13 +1,16 @@
 /*
  * Benoit Pierrehumbert
  * Bataille Navale
- * 07.03.2019
+ * 14.03.2019
  * En cours: affichage aide
  */
+
+
 #include <stdio.h>
 #include <windows.h>
 
-#pragma execution_character_set( "utf-8")
+
+#pragma execution_character_set("utf-8")
 #define STLC 218 // ┌, Single Top Left Corner
 #define STRC 191 // ┐, Single Top Right Corner
 #define SBLC 192 // └, Single Bottom Left Corner
@@ -21,6 +24,8 @@
 #define SC   197 // ┼, Single Center
 
 
+#define cote 8
+
 int menu() {
     int resmenu;
     printf("MENU lol");
@@ -28,8 +33,54 @@ int menu() {
     return resmenu;
 }
 
-void Aide(){
+void top() {
+    SetConsoleOutputCP(437); // For semi-graphic characters
+    
+    printf("%c", STLC);
+    for (int i = 0; i <= cote - 2; i++) {
+        printf("%c%c%c%c", SHSB, SHSB, SHSB, SHTB);
+    }
+    printf("%c%c%c%c", SHSB, SHSB, SHSB, STRC);
+}
+
+void mid() {
+    printf("\n%c", SVSB);
+    for (int i = 0; i <= cote - 2; i++) {
+        printf("   %c", SVSB);
+    }
+    printf("   %c", SVSB);
+}
+
+void midmid() {
+    printf("\n%c", SVLB);
+    for (int i = 0; i <= cote - 2; i++) {
+        printf("%c%c%c%c", SHSB, SHSB, SHSB, SC);
+    }
+    printf("%c%c%c%c", SHSB, SHSB, SHSB, SVRB);
+}
+
+void bootom(){
+    printf("\n%c", SBLC);
+    for (int i = 0; i <= cote - 2; i++) {
+        printf("%c%c%c%c", SHSB, SHSB, SHSB, SHBB);
+    }
+    printf("%c%c%c%c", SHSB, SHSB, SHSB, SBRC);
+}
+
+void grille() {
+    top();    ///OK
+    for (int i=0;i<=cote;i++) {
+        mid();    ///OK
+        midmid(); ///OK
+    }
+    mid();///OK
+    bootom(); ///OK
+
+}
+
+void Aide() {
     SetConsoleOutputCP(65001);
+    grille();
     printf("Bonjours je suis l'aide de ce jeu.\n");
     printf("Vous aller jouer à la bataille navale. \n"
            "Vous avez demandé l’aide.\n"
@@ -39,16 +90,6 @@ void Aide(){
            "Une fois que vous voyez s’afficher : Touché c’est que vous avez touché un bateau, chercher alors autour pour pouvoir lui faire sa fête.\n"
            "Une fois tous les bateaux couler vous avez gagné.\n");
     printf("Voulez vous afficher le menu ? (0 = oui / 1 = non)");
-}
-
-
-void grille() {
-    SetConsoleOutputCP(437); // For semi-graphic characters
-    printf("%c%c%c%c%c%c%c%c%c\n", STLC, SHSB, SHSB, SHSB, SHTB, SHSB, SHSB, SHSB, STRC);
-    printf("%c   %c   %c\n", SVSB, SVSB, SVSB);
-    printf("%c%c%c%c%c%c%c%c%c\n", SVLB, SHSB, SHSB, SHSB, SC, SHSB, SHSB, SHSB, SVRB);
-    printf("%c   %c   %c\n", SVSB, SVSB, SVSB);
-    printf("%c%c%c%c%c%c%c%c%c\n", SBLC, SHSB, SHSB, SHSB, SHBB, SHSB, SHSB, SHSB, SBRC);
 }
 
 int main() {
@@ -66,13 +107,14 @@ int main() {
 
     if (aide == 0) {//Affiche l'aide via une fonction
         Aide();
-        scanf("%d",&Qmenu);
+        scanf("%d", &Qmenu);
     } else if (aide == 1) {
-        printf("D'accord vous savez joué."); //sort de l'aide et charge le menu
-        menu;
+        printf("D'accord vous savez joué.\n"); //sort de l'aide et charge le menu
+
+
     }
-    if (Qmenu==1){
-        menu;
+    if (Qmenu == 1) {
+
     }
 
     return 0;
