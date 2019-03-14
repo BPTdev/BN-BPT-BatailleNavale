@@ -33,9 +33,17 @@ int menu() {
     return resmenu;
 }
 
+void lettre(){
+    for (int i=0;i<cote;i++){
+        int nb;
+        nb=i+49;
+        printf(" %c  ",nb);
+    }
+}
+
 void top() {
     SetConsoleOutputCP(437); // For semi-graphic characters
-    
+
     printf("%c", STLC);
     for (int i = 0; i <= cote - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHTB);
