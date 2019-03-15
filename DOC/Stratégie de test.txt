@@ -1,7 +1,7 @@
 Stratégie de test
 
 Les tests seront fait sur ma machine et celle d'un camarade,
-elles sont toute deux sous Window 10.
+elles sont toute deux sous Windows 10.
 
 Je préparerait au préalable 3 grilles de bateaux préplacer.
 
