@@ -27,68 +27,93 @@
 #define cote 8
 
 int menu() {
-    int resmenu;
+    int resmenu = 0;
+    resmenu = resmenu + 2;
     printf("MENU lol");
     scanf("%d", &resmenu);
     return resmenu;
 }
 
-void lettre(){
-    for (int i=0;i<cote;i++){
-        int nb;
-        nb=i+49;
-        printf(" %c  ",nb);
+void num(int cotes) {
+    for (int i = 0; i <= cotes; i++) {
+        while (i < 9) {     // afficher les premier 9 numero
+            int nb;
+            nb = i + 49;
+            printf("  %c ", nb);
+
+        }
+        if (i >= 10) {
+            int nb1 = i + 49; //valeur des dizaine
+            int nb2 = 48; // valeur des unitée
+            int compteur = 1;
+
+            for (int k = 0; k <= cotes + 8; k++) {
+                if (compteur == 10) {   //si les unité sont a 11 on les met a 0 et on fait + 1 au dizaine
+                    compteur = 0;
+                    nb2 = 0;
+                    nb1 = nb1 + 1;
+                }
+                compteur = compteur + 1;
+                printf(" %c%c ", nb1, nb2);
+                nb2 = nb2 + 1;
+
+            }
+
+
+        }
     }
 }
 
-void top() {
+void top(int cotes) {
     SetConsoleOutputCP(437); // For semi-graphic characters
-
+    printf("\n");
     printf("%c", STLC);
-    for (int i = 0; i <= cote - 2; i++) {
+    for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHTB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, STRC);
-}
+}      // ┌───┬───┐
 
-void mid() {
+void mid(int cotes) {
     printf("\n%c", SVSB);
-    for (int i = 0; i <= cote - 2; i++) {
+    for (int i = 0; i <= cotes - 2; i++) {
         printf("   %c", SVSB);
     }
     printf("   %c", SVSB);
-}
+}      // │   │   │
 
-void midmid() {
+void midmid(int cotes) {
     printf("\n%c", SVLB);
-    for (int i = 0; i <= cote - 2; i++) {
+    for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SC);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SVRB);
-}
+}   // ├───┼───┤
 
-void bootom(){
+void bootom(int cotes) {
     printf("\n%c", SBLC);
-    for (int i = 0; i <= cote - 2; i++) {
+    for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHBB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SBRC);
-}
+}   // └───┴───┘
 
-void grille() {
-    top();    ///OK
-    for (int i=0;i<=cote;i++) {
-        mid();    ///OK
-        midmid(); ///OK
+void grille(int Cotes) {
+
+    num(Cotes);
+    top(Cotes);    ///OK
+    for (int i = 0; i <= Cotes; i++) {
+        mid(Cotes);    ///OK
+        midmid(Cotes); ///OK
     }
-    mid();///OK
-    bootom(); ///OK
+    mid(Cotes);///OK
+    bootom(Cotes); ///OK
 
 }
 
 void Aide() {
     SetConsoleOutputCP(65001);
-    grille();
+    grille(cote);
     printf("Bonjours je suis l'aide de ce jeu.\n");
     printf("Vous aller jouer à la bataille navale. \n"
            "Vous avez demandé l’aide.\n"
@@ -104,7 +129,7 @@ int main() {
     SetConsoleOutputCP(65001);
     int aide = 0;
     int Qmenu = 9;
-    printf("Bonjours, voulez-vous afficher l'aide ?\n");
+    printf("Bonjour, voulez-vous afficher l'aide ?\n");
     do {
         printf("0 = oui, 1 = non");
         scanf("%d", &aide);
