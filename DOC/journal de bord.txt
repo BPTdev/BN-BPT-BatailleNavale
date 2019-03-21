@@ -1,0 +1,4 @@
+Journal de bord
+
+21.03.2019: ajout du journal de bord dans doc projet
+21.03.2019: ajout du journal de travail dans doc projet

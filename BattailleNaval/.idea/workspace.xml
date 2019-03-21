@@ -30,15 +30,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="289">
               <caret line="36" selection-start-line="36" selection-end-line="64" selection-end-column="1" />
               <folding>
-                <element signature="e#742#844#0" />
-                <element signature="e#961#1208#0" />
-                <element signature="e#1210#1356#0" />
-                <element signature="e#1358#1547#0" />
-                <element signature="e#1549#1748#0" />
-                <element signature="e#1903#2899#0" />
+                <element signature="e#742#875#0" />
+                <element signature="e#1665#1939#0" />
+                <element signature="e#1959#2115#0" />
+                <element signature="e#2135#2334#0" />
+                <element signature="e#2351#2552#0" />
+                <element signature="e#2569#2787#0" />
+                <element signature="e#2789#3789#0" />
+                <element signature="e#3791#4440#0" />
               </folding>
             </state>
           </provider>
@@ -74,6 +76,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,7 +88,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -133,17 +135,18 @@
       <workItem from="1552576799367" duration="1708000" />
       <workItem from="1552578686347" duration="194000" />
       <workItem from="1552634054269" duration="4426000" />
+      <workItem from="1553156370560" duration="861000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12413000" />
+    <option name="totallyTimeSpent" value="13274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="-8" width="1867" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18483675" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18705036" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -170,23 +173,25 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Desktop/EXAMEN 403 Benoît Pierrehumbert/Pierrehumbert_Elections/main.c" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$USER_HOME$/CLionProjects/NBCARACTER/main.c">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/CLionProjects/NBCARACTER/main.c">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="289">
           <caret line="36" selection-start-line="36" selection-end-line="64" selection-end-column="1" />
           <folding>
-            <element signature="e#742#844#0" />
-            <element signature="e#961#1208#0" />
-            <element signature="e#1210#1356#0" />
-            <element signature="e#1358#1547#0" />
-            <element signature="e#1549#1748#0" />
-            <element signature="e#1903#2899#0" />
+            <element signature="e#742#875#0" />
+            <element signature="e#1665#1939#0" />
+            <element signature="e#1959#2115#0" />
+            <element signature="e#2135#2334#0" />
+            <element signature="e#2351#2552#0" />
+            <element signature="e#2569#2787#0" />
+            <element signature="e#2789#3789#0" />
+            <element signature="e#3791#4440#0" />
           </folding>
         </state>
       </provider>
