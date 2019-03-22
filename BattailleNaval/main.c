@@ -25,13 +25,30 @@
 
 
 #define cote 10
+int datagrille[10][10]={
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0
 
+};
 int menu() {
     int resmenu = 0;
     resmenu = resmenu + 2;
     printf("MENU lol");
     scanf("%d", &resmenu);
     return resmenu;
+}
+
+int affgrille(int hauteur, int largeur){
+    switch (datagrille[hauteur-1][largeur-1])
+
 }
 
 void num(int cotes) {
@@ -72,14 +89,18 @@ void top(int cotes) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHTB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, STRC);
-}                    // ┌───┬───┐
+}                          // ┌───┬───┐
 
-int mid(int cotes,int i) {
+int mid(int cotes,int i,int ligne) {
     printf("\n %d %c",i, SVSB);
     for (int i = 0; i <= cotes - 2; i++) {
-        printf("   %c", SVSB);
+        printf(" ");
+        affgrille(ligne,i);
+        printf(" %c", SVSB);
     }
-    printf("   %c", SVSB);
+    printf(" ");
+    affgrille(ligne,i);
+    printf(" %c", SVSB);
 
 }                     // │   │   │
 
@@ -89,7 +110,7 @@ void midmid(int cotes) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SC);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SVRB);
-}                 // ├───┼───┤
+}                       // ├───┼───┤
 
 void bootom(int cotes) {
     printf("\n   %c", SBLC);
@@ -97,25 +118,25 @@ void bootom(int cotes) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHBB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SBRC);
-}                 // └───┴───┘
+}                       // └───┴───┘
 
 void grille(int Cotes) {
     printf("     A   B   C   D   E   F   G   H   I   J");
     top(Cotes);///OK
-    int i;
-    for (i = 2; i <= Cotes ; i++) {
-        mid(Cotes,i-2);    ///OK
+    int j;
+    int k=0;
+    for (j = 1; j < Cotes ; j++) {
+        mid(Cotes,j-1,j);    ///OK
         midmid(Cotes); ///OK
+        k=j;
     }
 
-    mid(Cotes,i-2);///OK
+    mid(Cotes,j-2,k);///OK
     bootom(Cotes); ///OK
     printf("\n");
 }
 
-int gdata();{
 
-}
 
 void Aide() {
     SetConsoleOutputCP(65001);
