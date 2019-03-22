@@ -24,7 +24,7 @@
 #define SC   197 // ┼, Single Center
 
 
-#define cote 8
+#define cote 10
 
 int menu() {
     int resmenu = 0;
@@ -36,7 +36,7 @@ int menu() {
 
 void num(int cotes) {
     for (int i = 0; i <= cotes; i++) {
-        while (i < 9) {     // afficher les premier 9 numero
+        while (i <= 9) {     // afficher les premier 9 numero
             int nb;
             nb = i + 49;
             printf("  %c ", nb);
@@ -67,47 +67,53 @@ void num(int cotes) {
 void top(int cotes) {
     SetConsoleOutputCP(437); // For semi-graphic characters
     printf("\n");
-    printf("%c", STLC);
+    printf("   %c", STLC);
     for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHTB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, STRC);
-}      // ┌───┬───┐
+}                    // ┌───┬───┐
 
-void mid(int cotes) {
-    printf("\n%c", SVSB);
+int mid(int cotes,int i) {
+    printf("\n %d %c",i, SVSB);
     for (int i = 0; i <= cotes - 2; i++) {
         printf("   %c", SVSB);
     }
     printf("   %c", SVSB);
-}      // │   │   │
+
+}                     // │   │   │
 
 void midmid(int cotes) {
-    printf("\n%c", SVLB);
+    printf("\n   %c", SVLB);
     for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SC);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SVRB);
-}   // ├───┼───┤
+}                 // ├───┼───┤
 
 void bootom(int cotes) {
-    printf("\n%c", SBLC);
+    printf("\n   %c", SBLC);
     for (int i = 0; i <= cotes - 2; i++) {
         printf("%c%c%c%c", SHSB, SHSB, SHSB, SHBB);
     }
     printf("%c%c%c%c", SHSB, SHSB, SHSB, SBRC);
-}   // └───┴───┘
+}                 // └───┴───┘
 
 void grille(int Cotes) {
-
-    num(Cotes);
-    top(Cotes);    ///OK
-    for (int i = 0; i <= Cotes; i++) {
-        mid(Cotes);    ///OK
+    printf("     A   B   C   D   E   F   G   H   I   J");
+    top(Cotes);///OK
+    int i;
+    for (i = 2; i <= Cotes ; i++) {
+        mid(Cotes,i-2);    ///OK
         midmid(Cotes); ///OK
     }
-    mid(Cotes);///OK
+
+    mid(Cotes,i-2);///OK
     bootom(Cotes); ///OK
+    printf("\n");
+}
+
+int gdata();{
 
 }
 
