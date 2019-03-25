@@ -1,8 +1,8 @@
 /*
  * Benoit Pierrehumbert
  * Bataille Navale
- * 14.03.2019
- * En cours: affichage aide
+ * 25.03.2019
+ * En cours: affichage donnée grille
  */
 
 
@@ -25,19 +25,20 @@
 
 
 #define cote 10
-int datagrille[10][10]={
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0
+int datagrille[10][10] = {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//probleme affichage f5
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 1, 1, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 3, 0}
 
 };
+
 int menu() {
     int resmenu = 0;
     resmenu = resmenu + 2;
@@ -46,9 +47,21 @@ int menu() {
     return resmenu;
 }
 
-int affgrille(int hauteur, int largeur){
-    switch (datagrille[hauteur-1][largeur-1])
-
+int affgrille(int hauteur, int largeur) {
+    switch (datagrille[hauteur - 1][largeur - 1]) {
+        case 0:
+            printf(" "); //cas standard
+            break;
+        case 1:
+            printf("X"); // touché
+            break;
+        case 2:
+            printf("O"); //a lo
+            break;
+        case 3:
+            printf("%c", SC);
+            break;
+    }
 }
 
 void num(int cotes) {
@@ -91,18 +104,24 @@ void top(int cotes) {
     printf("%c%c%c%c", SHSB, SHSB, SHSB, STRC);
 }                          // ┌───┬───┐
 
-int mid(int cotes,int i,int ligne) {
-    printf("\n %d %c",i, SVSB);
-    for (int i = 0; i <= cotes - 2; i++) {
+int mid(int cotes, int i, int ligne) {
+    int a = 1;
+    if (i <= 9) {
+        printf("\n %d %c", i, SVSB);
+    } else if (i == 10) {
+        printf("\n%d %c", i, SVSB);
+    }
+    for (int i = -1; i <= cotes - 3; i++) {
         printf(" ");
-        affgrille(ligne,i);
+        affgrille(ligne, a);
         printf(" %c", SVSB);
+        a++;
     }
     printf(" ");
-    affgrille(ligne,i);
+    affgrille(ligne, a);
     printf(" %c", SVSB);
 
-}                     // │   │   │
+}           // │   │   │
 
 void midmid(int cotes) {
     printf("\n   %c", SVLB);
@@ -124,18 +143,17 @@ void grille(int Cotes) {
     printf("     A   B   C   D   E   F   G   H   I   J");
     top(Cotes);///OK
     int j;
-    int k=0;
-    for (j = 1; j < Cotes ; j++) {
-        mid(Cotes,j-1,j);    ///OK
+    int k = 0;
+    for (j = 1; j < Cotes; j++) {
+        mid(Cotes, j, j);    ///OK
         midmid(Cotes); ///OK
-        k=j;
+        k = j;
     }
 
-    mid(Cotes,j-2,k);///OK
+    mid(Cotes, j, k);///OK
     bootom(Cotes); ///OK
     printf("\n");
 }
-
 
 
 void Aide() {
