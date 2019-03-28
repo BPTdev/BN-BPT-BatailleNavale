@@ -43,8 +43,10 @@ int datagrille[10][10] = {
 int menu() {
     int resmenu = 0;
     resmenu = resmenu + 2;
-    printf("MENU lol");
-    scanf("%d", &resmenu);
+    printf("1. Aide\n"
+           "2. Jouer\n"
+           "9.Quitter\n");
+    resmenu=_getch();
     return resmenu;
 }
 
@@ -126,9 +128,21 @@ void grille(int Cotes) {
     printf("\n");
 }
 
+void jouer(){
+    grille(cote);
+    int lettre=0;
+    int num=0;
+    printf("Où voulez-vous tirer ?\n");
+    printf("Le numéro de la ligne SVP.");
+    scanf("%d",&num);
+    printf("La lettre de la colone SVP.");
+    lettre=_getch();/// A=97
+
+
+}
+
 
 int Aide() {
-    grille(cote);
     SetConsoleOutputCP(65001);
     printf("Bonjours je suis l'aide de ce jeu.\n");
     printf("Vous aller jouer à la bataille navale. \n"
@@ -138,13 +152,31 @@ int Aide() {
            "Pour tirer veuillez avoir posé vos 9 « bout » de bateau. Une fois ceci fait dite au programme une case tell : C5 et faite entrer.\n"
            "Une fois que vous voyez s’afficher : Touché c’est que vous avez touché un bateau, chercher alors autour pour pouvoir lui faire sa fête.\n"
            "Une fois tous les bateaux couler vous avez gagné.\n");
-    printf("Appuyer sur une touche pour afficher le menu.");
-    int Qmenu;
-    Qmenu=_getch();
-    return Qmenu;
+
 }
 
 int main() {
+    int omenu=0;//option menu
+    omenu=menu();
+    int quitter=-1;
+    switch (omenu) {
+            case 49:
+                Aide();
+            case 50:
+                jouer();
+
+            case 57:
+                printf("Voulez-vous vraimment quitter?"
+                       "\n0=Oui, 1=Non");
+                scanf("%d", &quitter);
+                if (quitter == 0) {
+                    return 0;
+                } else if (quitter == 1) {
+                    menu();
+                }
+
+        }
+
     SetConsoleOutputCP(65001);
     int aide = 0;
     int Qmenu = 9;
@@ -162,6 +194,7 @@ int main() {
     if (aide == 0) {//Affiche l'aide via une fonction
         system("cls");
         Aide();
+        system("pause");
         menu();
     } else if (aide == 1) {
         system("cls");
