@@ -19,6 +19,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -30,18 +33,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="138" column="28" selection-start-line="138" selection-start-column="28" selection-end-line="138" selection-end-column="28" />
+            <state relative-caret-position="303">
+              <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
               <folding>
                 <element signature="e#103#121#0" expanded="true" />
-                <element signature="e#1201#1373#0" />
-                <element signature="e#1375#1753#0" />
-                <element signature="e#1755#2032#0" />
-                <element signature="e#2072#2460#0" />
-                <element signature="e#2483#2685#0" />
-                <element signature="e#2722#2926#0" />
-                <element signature="e#2963#3286#0" />
-                <element signature="e#3289#4205#0" />
+                <element signature="e#1201#1379#0" />
+                <element signature="e#1761#2038#0" />
+                <element signature="e#2078#2466#0" />
+                <element signature="e#2489#2691#0" />
+                <element signature="e#2728#2932#0" />
+                <element signature="e#2969#3292#0" />
+                <element signature="e#3541#4457#0" />
+                <element signature="e#4459#5670#0" />
               </folding>
             </state>
           </provider>
@@ -62,8 +65,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="62" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="362" />
+    <option name="y" value="-11" />
     <option name="width" value="1400" />
     <option name="height" value="1087" />
   </component>
@@ -88,6 +92,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/CLionProjects/NBCARACTER" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -144,17 +149,20 @@
       <workItem from="1553759168198" duration="2353000" />
       <workItem from="1553763325649" duration="2246000" />
       <workItem from="1553783623094" duration="1914000" />
-      <workItem from="1553786223831" duration="2284000" />
+      <workItem from="1553786223831" duration="2309000" />
+      <workItem from="1553842958555" duration="504000" />
+      <workItem from="1553843605930" duration="907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38283000" />
+    <option name="totallyTimeSpent" value="39719000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="0" width="1400" height="1087" extended-state="0" />
+    <frame x="61" y="-8" width="1867" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28507462" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21693414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -188,9 +196,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../code getch/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -201,20 +206,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="138" column="28" selection-start-line="138" selection-start-column="28" selection-end-line="138" selection-end-column="28" />
+        <state relative-caret-position="303">
+          <caret line="67" column="20" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="20" />
           <folding>
             <element signature="e#103#121#0" expanded="true" />
-            <element signature="e#1201#1373#0" />
-            <element signature="e#1375#1753#0" />
-            <element signature="e#1755#2032#0" />
-            <element signature="e#2072#2460#0" />
-            <element signature="e#2483#2685#0" />
-            <element signature="e#2722#2926#0" />
-            <element signature="e#2963#3286#0" />
-            <element signature="e#3289#4205#0" />
+            <element signature="e#1201#1379#0" />
+            <element signature="e#1761#2038#0" />
+            <element signature="e#2078#2466#0" />
+            <element signature="e#2489#2691#0" />
+            <element signature="e#2728#2932#0" />
+            <element signature="e#2969#3292#0" />
+            <element signature="e#3541#4457#0" />
+            <element signature="e#4459#5670#0" />
           </folding>
         </state>
       </provider>

@@ -55,15 +55,17 @@ int affgrille(int hauteur, int largeur) {
         case 0:
             printf(" "); //cas standard
             break;
-        case 1:
-            printf("X"); // touché
+        case 10:
+            printf("O"); // touché
             break;
-        case 2:
-            printf("O"); //a lo
+        case 11:
+            printf("X"); //a lo
             break;
-        case 3:
+        case 3://coulé
             printf("%c", SC);
             break;
+        case 10:
+            printf()
     }
 }
 
@@ -132,12 +134,25 @@ void jouer(){
     grille(cote);
     int lettre=0;
     int num=0;
-    printf("Où voulez-vous tirer ?\n");
-    printf("Le numéro de la ligne SVP.");
-    scanf("%d",&num);
-    printf("La lettre de la colone SVP.");
-    lettre=_getch();/// A=97
-
+    int gagner=0;
+    while (gagner==0) {
+        printf("Où voulez-vous tirer ?\n");
+        printf("Le numéro de la ligne SVP.");
+        scanf("%d", &num);
+        printf("La lettre de la colone SVP.");
+        lettre = _getch();/// A=97
+        lettre=lettre
+        //si a lo
+        if (datagrille[num][lettre]==0){
+            printf("À l'eau !");
+            datagrille[num][lettre]=10;
+        }
+        //si toucher
+        if (datagrille[num][lettre]==1){
+            printf("Touché !");
+            datagrille[num][lettre]=11;
+        }
+    }
 
 }
 
