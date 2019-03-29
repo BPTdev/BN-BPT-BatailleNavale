@@ -27,8 +27,8 @@
 
 #define cote 10
 int datagrille[10][10] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        {11, 11, 11, 11, 11, 11, 11, 11, 11, 11},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -46,7 +46,7 @@ int menu() {
     printf("1. Aide\n"
            "2. Jouer\n"
            "9.Quitter\n");
-    resmenu=_getch();
+    resmenu = _getch();
     return resmenu;
 }
 
@@ -54,6 +54,9 @@ int affgrille(int hauteur, int largeur) {
     switch (datagrille[hauteur - 1][largeur - 1]) {
         case 0:
             printf(" "); //cas standard
+            break;
+        case 1: // si il y a un bato
+            printf(" ");
             break;
         case 10:
             printf("O"); // touché
@@ -64,8 +67,6 @@ int affgrille(int hauteur, int largeur) {
         case 3://coulé
             printf("%c", SC);
             break;
-        case 10:
-            printf()
     }
 }
 
@@ -125,33 +126,41 @@ void grille(int Cotes) {
         k = j;
     }
 
-    mid(Cotes, j, k+1);///OK
+    mid(Cotes, j, k + 1);///OK
     bootom(Cotes); ///OK
     printf("\n");
 }
 
-void jouer(){
+void jouer() {
+    SetConsoleOutputCP(65001);
     grille(cote);
-    int lettre=0;
-    int num=0;
-    int gagner=0;
-    while (gagner==0) {
-        printf("Où voulez-vous tirer ?\n");
-        printf("Le numéro de la ligne SVP.");
-        scanf("%d", &num);
-        printf("La lettre de la colone SVP.");
-        lettre = _getch();/// A=97
-        lettre=lettre
+    int lettre = 0;
+    int num = 0;
+    int gagner = 0;
+    while (gagner == 0) {
+        do {
+            printf("Où voulez-vous tirer ?\n");
+            printf("La lettre en premier\n");         // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
+            do {
+                lettre = _getch();
+                printf("%c", lettre);
+            } while (lettre <= 96 || lettre >= 123);
+            lettre = lettre - 97;
+            num = _getch();
+            printf("%c", num);
+            num = num - 49;
+        } while (datagrille[num][lettre] == 11 || datagrille[num][lettre] == 11);
         //si a lo
-        if (datagrille[num][lettre]==0){
-            printf("À l'eau !");
-            datagrille[num][lettre]=10;
+        if (datagrille[num][lettre] == 0) {
+            printf("À l'eau !\n");
+            datagrille[num][lettre] = 10;
         }
         //si toucher
-        if (datagrille[num][lettre]==1){
-            printf("Touché !");
-            datagrille[num][lettre]=11;
+        if (datagrille[num][lettre] == 1) {
+            printf("Touché !\n");
+            datagrille[num][lettre] = 11;
         }
+
     }
 
 }
@@ -171,26 +180,27 @@ int Aide() {
 }
 
 int main() {
-    int omenu=0;//option menu
-    omenu=menu();
-    int quitter=-1;
+    int omenu = 0;//option menu
+    omenu = menu();
+    int quitter = -1;
     switch (omenu) {
-            case 49:
-                Aide();
-            case 50:
-                jouer();
-
-            case 57:
-                printf("Voulez-vous vraimment quitter?"
-                       "\n0=Oui, 1=Non");
-                scanf("%d", &quitter);
-                if (quitter == 0) {
-                    return 0;
-                } else if (quitter == 1) {
-                    menu();
-                }
-
-        }
+        case 49:
+            Aide();
+            break;
+        case 50:
+            jouer();
+            break;
+        case 57:
+            printf("Voulez-vous vraimment quitter?"
+                   "\n0=Oui, 1=Non");
+            scanf("%d", &quitter);
+            if (quitter == 0) {
+                return 0;
+            } else if (quitter == 1) {
+                menu();
+            }
+            break;
+    }
 
     SetConsoleOutputCP(65001);
     int aide = 0;
