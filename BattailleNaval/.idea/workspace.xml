@@ -33,17 +33,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+            <state relative-caret-position="279">
+              <caret line="157" column="37" selection-start-line="157" selection-start-column="37" selection-end-line="157" selection-end-column="37" />
               <folding>
                 <element signature="e#103#121#0" expanded="true" />
-                <element signature="e#1201#1379#0" />
-                <element signature="e#1761#2038#0" />
-                <element signature="e#2078#2466#0" />
-                <element signature="e#2489#2691#0" />
-                <element signature="e#2728#2932#0" />
-                <element signature="e#2969#3292#0" />
-                <element signature="e#3541#4457#0" />
+                <element signature="e#1863#2140#0" />
+                <element signature="e#2180#2568#0" />
+                <element signature="e#2591#2793#0" />
+                <element signature="e#2830#3034#0" />
+                <element signature="e#3071#3396#0" />
+                <element signature="e#5322#6538#0" />
               </folding>
             </state>
           </provider>
@@ -65,8 +64,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="362" />
-    <option name="y" value="-11" />
+    <option name="x" value="187" />
+    <option name="y" value="-18" />
     <option name="width" value="1400" />
     <option name="height" value="1087" />
   </component>
@@ -150,29 +149,30 @@
       <workItem from="1553783623094" duration="1914000" />
       <workItem from="1553786223831" duration="2309000" />
       <workItem from="1553842958555" duration="504000" />
-      <workItem from="1553843605930" duration="4927000" />
+      <workItem from="1553843605930" duration="5527000" />
+      <workItem from="1554099505677" duration="4427000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43739000" />
+    <option name="totallyTimeSpent" value="48766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="61" y="-8" width="1867" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21693414" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16325401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2596054" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34371755" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997923" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3281412" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.3281412" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32917964" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -195,9 +195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../code getch/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -208,19 +205,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
+        <state relative-caret-position="279">
+          <caret line="157" column="37" selection-start-line="157" selection-start-column="37" selection-end-line="157" selection-end-column="37" />
           <folding>
             <element signature="e#103#121#0" expanded="true" />
-            <element signature="e#1201#1379#0" />
-            <element signature="e#1761#2038#0" />
-            <element signature="e#2078#2466#0" />
-            <element signature="e#2489#2691#0" />
-            <element signature="e#2728#2932#0" />
-            <element signature="e#2969#3292#0" />
-            <element signature="e#3541#4457#0" />
+            <element signature="e#1863#2140#0" />
+            <element signature="e#2180#2568#0" />
+            <element signature="e#2591#2793#0" />
+            <element signature="e#2830#3034#0" />
+            <element signature="e#3071#3396#0" />
+            <element signature="e#5322#6538#0" />
           </folding>
         </state>
       </provider>

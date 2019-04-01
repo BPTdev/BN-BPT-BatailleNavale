@@ -132,39 +132,49 @@ void grille(int Cotes) {
 }
 
 void jouer() {
-    SetConsoleOutputCP(65001);
-    grille(cote);
     int lettre = 0;
     int num = 0;
     int gagner = 0;
     while (gagner == 0) {
         do {
-            printf("Où voulez-vous tirer ?\n");
-            printf("La lettre en premier\n");         // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
+            SetConsoleOutputCP(65001);
+            grille(cote);
+                    // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
             do {
+                printf("Où voulez-vous tirer ?\n");
+                printf("La lettre en premier\n");
                 lettre = _getch();
                 printf("%c", lettre);
-            } while (lettre <= 96 || lettre >= 123);
-            lettre = lettre - 97;
-            num = _getch();
-            printf("%c", num);
-            num = num - 49;
+                system("cls");
+                if (lettre <= 96 || lettre >= 107){
+                    printf("Mauvaise réponse, donne moi une case qui éxiste bon sang ! ");
+                }
+            } while (lettre <= 96 || lettre >= 107);
+            do {
+                lettre = lettre - 97;
+                scanf("%d",&num);
+                printf("%c", num);
+                num = num - 49;
+            } while (num<=-1||num>=10);
         } while (datagrille[num][lettre] == 11 || datagrille[num][lettre] == 11);
         //si a lo
         if (datagrille[num][lettre] == 0) {
+            system("cls");
+            grille(cote);
+            SetConsoleOutputCP(65001);
             printf("À l'eau !\n");
             datagrille[num][lettre] = 10;
         }
         //si toucher
         if (datagrille[num][lettre] == 1) {
+            system("cls");
+            grille(cote);
+            SetConsoleOutputCP(65001);
             printf("Touché !\n");
             datagrille[num][lettre] = 11;
         }
-
     }
-
 }
-
 
 int Aide() {
     SetConsoleOutputCP(65001);
