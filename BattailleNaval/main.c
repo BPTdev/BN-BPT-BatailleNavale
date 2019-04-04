@@ -27,22 +27,21 @@
 
 #define cote 10
 int datagrille[10][10] = {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+        {1,  1,  1,  1,  1,  1,  1,  1,  1,  1},
         {11, 11, 11, 11, 11, 11, 11, 11, 11, 11},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0}
 
 };
 
 int menu() {
     int resmenu = 0;
-    resmenu = resmenu + 2;
     printf("1. Aide\n"
            "2. Jouer\n"
            "9.Quitter\n");
@@ -59,10 +58,10 @@ int affgrille(int hauteur, int largeur) {
             printf(" ");
             break;
         case 10:
-            printf("O"); // touché
+            printf("X"); // touché
             break;
         case 11:
-            printf("X"); //a lo
+            printf("O"); //a lo
             break;
         case 3://coulé
             printf("%c", SC);
@@ -132,35 +131,27 @@ void grille(int Cotes) {
 }
 
 void jouer() {
-    int lettre = 0;
+    char lettre;
     int num = 0;
     int gagner = 0;
-    while (gagner == 0) {
-        do {
-            SetConsoleOutputCP(65001);
-            grille(cote);
-                    // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
-            do {
-                printf("Où voulez-vous tirer ?\n");
-                printf("La lettre en premier\n");
-                lettre = _getch();
-                printf("%c", lettre);
-                system("cls");
-                if (lettre <= 96 || lettre >= 107){
-                    printf("Mauvaise réponse, donne moi une case qui éxiste bon sang ! ");
-                }
-            } while (lettre <= 96 || lettre >= 107);
-            do {
-                lettre = lettre - 97;
-                scanf("%d",&num);
-                printf("%c", num);
-                num = num - 49;
-            } while (num<=-1||num>=10);
-        } while (datagrille[num][lettre] == 11 || datagrille[num][lettre] == 11);
+    for (int i = 0; i < 100; ++i) {
+
+
+        SetConsoleOutputCP(65001);
+        grille(cote);
+        // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
+        printf("Où voulez-vous tirer ?\n");
+        printf("La lettre en premier\n");
+        scanf("%c%d", &lettre, &num);
+        printf("%c", lettre);
+        system("cls");
+        lettre -= 97;
+        num -= 1;
+
+
         //si a lo
         if (datagrille[num][lettre] == 0) {
             system("cls");
-            grille(cote);
             SetConsoleOutputCP(65001);
             printf("À l'eau !\n");
             datagrille[num][lettre] = 10;
@@ -178,7 +169,7 @@ void jouer() {
 
 int Aide() {
     SetConsoleOutputCP(65001);
-    printf("Bonjours je suis l'aide de ce jeu.\n");
+    printf("Bonjour je suis l'aide de ce jeu.\n");
     printf("Vous aller jouer à la bataille navale. \n"
            "Vous avez demandé l’aide.\n"
            "Les règles sont assez simple : Pour commencer poser vos bateaux en disant au programme les case exemple pour un bateau à 2 cases.\n"
@@ -196,6 +187,8 @@ int main() {
     switch (omenu) {
         case 49:
             Aide();
+            system("pause");
+            jouer();
             break;
         case 50:
             jouer();
@@ -211,7 +204,7 @@ int main() {
             }
             break;
     }
-
+/*
     SetConsoleOutputCP(65001);
     int aide = 0;
     int Qmenu = 9;
@@ -235,7 +228,7 @@ int main() {
         system("cls");
         printf("D'accord vous savez joué.\n"); //sort de l'aide et charge le menu
     }
-
+*/
 
     return 0;
 }
