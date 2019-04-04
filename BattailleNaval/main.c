@@ -47,7 +47,7 @@ int menu() {
            "9.Quitter\n");
     do{
     resmenu = _getch();
-    }while (resmenu!=49||resmenu!=50||resmenu!=57);
+    }while (resmenu!=49&&resmenu!=50&&resmenu!=57);
     return resmenu;
 }
 
@@ -184,6 +184,7 @@ void jouer() {
             grille(cote);
             if(compteurbato1!=4) {
                 SetConsoleOutputCP(65001);
+                system("cls");
                 printf("Touché \n");
                 datagrille[num][lettre] = 11;
                 compteurbato1 += 1;
@@ -206,6 +207,7 @@ void jouer() {
             system("cls");
             grille(cote);
             SetConsoleOutputCP(65001);
+            system("cls");
             printf("Touché \n");
             datagrille[num][lettre] = 12;
             compteurbato2 +=1;
@@ -227,6 +229,7 @@ void jouer() {
             system("cls");
             grille(cote);
             SetConsoleOutputCP(65001);
+            system("cls");
             printf("Touché \n");
             datagrille[num][lettre] = 13;
             compteurbato3 +=1;
@@ -280,7 +283,10 @@ int main() {
         case 57:
             printf("Voulez-vous vraimment quitter?"
                    "\n0=Oui, 1=Non");
-            scanf("%d", &quitter);
+            do {
+                scanf("%d", &quitter);
+            }while (quitter !=49&&quitter !=50);
+
             if (quitter == 0) {
                 return 0;
             } else if (quitter == 1) {
@@ -288,31 +294,7 @@ int main() {
             }
             break;
     }
-/*
-    SetConsoleOutputCP(65001);
-    int aide = 0;
-    int Qmenu = 9;
-    printf("Bonjour, voulez-vous afficher l'aide ?\n");
-    do {
-        printf("0 = OUI, 1 = NON");
-        scanf("%d", &aide);
 
-        if (aide != 1 && aide != 0) {//si pas un ou deux redemande
-            system("cls");
-            printf("Ce n'est pas une réponse valable...\n");
-        }
-    } while (aide != 1 && aide != 0);
-
-    if (aide == 0) {//Affiche l'aide via une fonction
-        system("cls");
-        Aide();
-        system("pause");
-        menu();
-    } else if (aide == 1) {
-        system("cls");
-        printf("D'accord vous savez joué.\n"); //sort de l'aide et charge le menu
-    }
-*/
 
     return 0;
 }
