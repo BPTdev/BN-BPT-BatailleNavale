@@ -1,7 +1,7 @@
 /*
  * Benoit Pierrehumbert
  * Bataille Navale
- * 25.03.2019
+ * 05.04.2019
  * En cours: affichage donnée grille
  */
 
@@ -26,17 +26,17 @@
 
 
 #define cote 10
-int datagrille[10][10] = {
-        {1,  1,  1,  1,  1,  1,  1,  1,  1,  1},
-        {11, 11, 11, 11, 11, 11, 11, 11, 11, 11},
+int datagrille[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
+        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
         {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
         {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
         {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
         {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0}
+        {1,  1,  1,  1,  0,  0,  0,  0,  0,  3},
+        {0,  0,  0,  0,  0,  0,  0,  0,  0,  3}
 
 };
 
@@ -45,7 +45,9 @@ int menu() {
     printf("1. Aide\n"
            "2. Jouer\n"
            "9.Quitter\n");
+    do{
     resmenu = _getch();
+    }while (resmenu!=49||resmenu!=50||resmenu!=57);
     return resmenu;
 }
 
@@ -57,14 +59,32 @@ int affgrille(int hauteur, int largeur) {
         case 1: // si il y a un bato
             printf(" ");
             break;
-        case 10:
-            printf("X"); // touché
+        case 2: // si il y a un bato
+            printf(" ");
             break;
-        case 11:
-            printf("O"); //a lo
+        case 3: // si il y a un bato
+            printf(" ");
             break;
-        case 3://coulé
-            printf("%c", SC);
+        case 10://A lo
+            printf("O");
+            break;
+        case 11://touché
+            printf("X");
+            break;
+        case 12://touché
+            printf("X");
+            break;
+        case 13://touché
+            printf("X");
+            break;
+        case 21://coulé
+            printf("%c", 219);
+            break;
+        case 22://coulé
+            printf("%c", 219);
+            break;
+        case 23://coulé
+            printf("%c", 219);
             break;
     }
 }
@@ -82,9 +102,9 @@ void top(int cotes) {
 int mid(int cotes, int i, int ligne) {
     int a = 1;
     if (i <= 9) {
-        printf("\n %d %c", i, SVSB);
+        printf("\n %d %c", i-1, SVSB);
     } else if (i == 10) {
-        printf("\n%d %c", i, SVSB);
+        printf("\n %d %c", i-1, SVSB);
     }
     for (int i = -1; i <= cotes - 3; i++) {
         printf(" ");
@@ -131,22 +151,24 @@ void grille(int Cotes) {
 }
 
 void jouer() {
-    char lettre;
+    char tir[5];
     int num = 0;
+    int lettre;
     int gagner = 0;
-    for (int i = 0; i < 100; ++i) {
+    int compteurbato1=0;
+    int compteurbato2=0;
+    int compteurbato3=0;
+    while (gagner==0){
 
-
-        SetConsoleOutputCP(65001);
         grille(cote);
         // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
+        SetConsoleOutputCP(65001);
         printf("Où voulez-vous tirer ?\n");
         printf("La lettre en premier\n");
-        scanf("%c%d", &lettre, &num);
-        printf("%c", lettre);
+        scanf("%s", &tir);
         system("cls");
-        lettre -= 97;
-        num -= 1;
+        lettre = tir[0]-97;//97 ='a'
+        num = tir[1]-48;
 
 
         //si a lo
@@ -156,15 +178,77 @@ void jouer() {
             printf("À l'eau !\n");
             datagrille[num][lettre] = 10;
         }
-        //si toucher
+        //si toucher bato1
         if (datagrille[num][lettre] == 1) {
             system("cls");
             grille(cote);
+            if(compteurbato1!=4) {
+                SetConsoleOutputCP(65001);
+                printf("Touché \n");
+                datagrille[num][lettre] = 11;
+                compteurbato1 += 1;
+                if (compteurbato1==4){
+                    printf("coulé");
+                    for (int i = 0; i <cote ; ++i) {
+                        for (int j = 0; j <cote ; ++j) {
+                            if (datagrille[i][j]==11) {
+                                datagrille[i][j] =21;
+                            }
+                        }
+
+                    }
+                }
+                printf(" !\n");
+            }
+        }
+        //si toucher bato2
+        if (datagrille[num][lettre] == 2) {
+            system("cls");
+            grille(cote);
             SetConsoleOutputCP(65001);
-            printf("Touché !\n");
-            datagrille[num][lettre] = 11;
+            printf("Touché \n");
+            datagrille[num][lettre] = 12;
+            compteurbato2 +=1;
+            if (compteurbato2==3){
+                printf("coulé");
+                for (int i = 0; i <cote ; ++i) {
+                    for (int j = 0; j <cote ; ++j) {
+                        if (datagrille[i][j]==12) {
+                            datagrille[i][j] =22;
+                        }
+                    }
+
+                }
+            }
+            printf(" !\n");
+        }
+        //si toucher bato3
+        if (datagrille[num][lettre] == 3) {
+            system("cls");
+            grille(cote);
+            SetConsoleOutputCP(65001);
+            printf("Touché \n");
+            datagrille[num][lettre] = 13;
+            compteurbato3 +=1;
+            if (compteurbato3==2){
+                printf("coulé");
+                for (int i = 0; i <cote ; ++i) {
+                    for (int j = 0; j <cote ; ++j) {
+                        if (datagrille[i][j]==13) {
+                            datagrille[i][j] =23;
+                        }
+                    }
+
+                }
+            }
+            printf(" !\n");
+        }
+        if (compteurbato1==4&&compteurbato2==3&&compteurbato3==2){
+            gagner +=1;
         }
     }
+    printf("Vous avez gagner !");
+    system("pause");
 }
 
 int Aide() {
