@@ -26,28 +26,53 @@
 
 
 #define cote 10
+
+
 int datagrille[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  2,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
-        {1,  1,  1,  1,  0,  0,  0,  0,  0,  3},
-        {0,  0,  0,  0,  0,  0,  0,  0,  0,  3}
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {1, 1, 1, 1, 0, 0, 0, 0, 0, 3},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 3}
 
 };
+
+/*int choixgrille(int cotes) {
+    char fich;
+    FILE *fich;
+    fich = fopen("grille\\grille1.txt", "r"); // On 'fixe' la poignée sur le fichier 'fichier.txt',
+
+    // en indiquant que l'on va lire ('r') cette fois
+    int i = 0; // compteur de caractères
+    while (!feof(fich)) // Tant qu'il reste des caractères à lire
+    {
+        for (int i = 0; i < cote; ++i) {
+            for (int j = 0; j < cote; ++j) {
+                if (datagrille[i][j] == 11) {
+                    char c = fgetc(fich);   // lire un caractère
+                    datagrille[i][j] = c - '0';         // Stocker le chiffre dans le modèle
+                    i++;
+                }
+            }
+
+        }
+    }
+}
+*/
 
 int menu() {
     int resmenu = 0;
     printf("1. Aide\n"
            "2. Jouer\n"
            "9.Quitter\n");
-    do{
-    resmenu = _getch();
-    }while (resmenu!=49&&resmenu!=50&&resmenu!=57);
+    do {
+        resmenu = _getch();
+    } while (resmenu != 49 && resmenu != 50 && resmenu != 57);
     return resmenu;
 }
 
@@ -102,9 +127,9 @@ void top(int cotes) {
 int mid(int cotes, int i, int ligne) {
     int a = 1;
     if (i <= 9) {
-        printf("\n %d %c", i-1, SVSB);
+        printf("\n %d %c", i - 1, SVSB);
     } else if (i == 10) {
-        printf("\n %d %c", i-1, SVSB);
+        printf("\n %d %c", i - 1, SVSB);
     }
     for (int i = -1; i <= cotes - 3; i++) {
         printf(" ");
@@ -155,20 +180,28 @@ void jouer() {
     int num = 0;
     int lettre;
     int gagner = 0;
-    int compteurbato1=0;
-    int compteurbato2=0;
-    int compteurbato3=0;
-    while (gagner==0){
+    int compteurbato1 = 0;
+    int compteurbato2 = 0;
+    int compteurbato3 = 0;
+    while (gagner == 0) {
 
         grille(cote);
         // ajouter un syteme qui sait si on a donner la lettre en premier ou pas (A=97/Z=122)
         SetConsoleOutputCP(65001);
         printf("Où voulez-vous tirer ?\n");
         printf("La lettre en premier\n");
-        scanf("%s", &tir);
+        do {
+            tir[2]=0;
+            scanf("%s", &tir);
+            if (tir[0] < 97 || tir[0] > 106 || tir[1] < 49 || tir[1] > 57 || tir[2]!=0) {
+                printf("Ce n'est pas une valeur d'une case !\n");
+                printf("Où voulez-vous tirer ?\n");
+                printf("La lettre en premier\n");
+            }
+        } while (tir[0] < 97 || tir[0] > 106 || tir[1] < 48 || tir[1] > 57);
         system("cls");
-        lettre = tir[0]-97;//97 ='a'
-        num = tir[1]-48;
+        lettre = tir[0] - 97;//97 ='a'
+        num = tir[1] - 48;
 
 
         //si a lo
@@ -182,18 +215,18 @@ void jouer() {
         if (datagrille[num][lettre] == 1) {
             system("cls");
             grille(cote);
-            if(compteurbato1!=4) {
+            if (compteurbato1 != 4) {
                 SetConsoleOutputCP(65001);
                 system("cls");
                 printf("Touché \n");
                 datagrille[num][lettre] = 11;
                 compteurbato1 += 1;
-                if (compteurbato1==4){
+                if (compteurbato1 == 4) {
                     printf("coulé");
-                    for (int i = 0; i <cote ; ++i) {
-                        for (int j = 0; j <cote ; ++j) {
-                            if (datagrille[i][j]==11) {
-                                datagrille[i][j] =21;
+                    for (int i = 0; i < cote; ++i) {
+                        for (int j = 0; j < cote; ++j) {
+                            if (datagrille[i][j] == 11) {
+                                datagrille[i][j] = 21;
                             }
                         }
 
@@ -210,13 +243,13 @@ void jouer() {
             system("cls");
             printf("Touché \n");
             datagrille[num][lettre] = 12;
-            compteurbato2 +=1;
-            if (compteurbato2==3){
+            compteurbato2 += 1;
+            if (compteurbato2 == 3) {
                 printf("coulé");
-                for (int i = 0; i <cote ; ++i) {
-                    for (int j = 0; j <cote ; ++j) {
-                        if (datagrille[i][j]==12) {
-                            datagrille[i][j] =22;
+                for (int i = 0; i < cote; ++i) {
+                    for (int j = 0; j < cote; ++j) {
+                        if (datagrille[i][j] == 12) {
+                            datagrille[i][j] = 22;
                         }
                     }
 
@@ -232,13 +265,13 @@ void jouer() {
             system("cls");
             printf("Touché \n");
             datagrille[num][lettre] = 13;
-            compteurbato3 +=1;
-            if (compteurbato3==2){
+            compteurbato3 += 1;
+            if (compteurbato3 == 2) {
                 printf("coulé");
-                for (int i = 0; i <cote ; ++i) {
-                    for (int j = 0; j <cote ; ++j) {
-                        if (datagrille[i][j]==13) {
-                            datagrille[i][j] =23;
+                for (int i = 0; i < cote; ++i) {
+                    for (int j = 0; j < cote; ++j) {
+                        if (datagrille[i][j] == 13) {
+                            datagrille[i][j] = 23;
                         }
                     }
 
@@ -246,12 +279,13 @@ void jouer() {
             }
             printf(" !\n");
         }
-        if (compteurbato1==4&&compteurbato2==3&&compteurbato3==2){
-            gagner +=1;
+        if (compteurbato1 == 4 && compteurbato2 == 3 && compteurbato3 == 2) {
+            gagner += 1;
         }
     }
     printf("Vous avez gagner !");
     system("pause");
+    menu();
 }
 
 int Aide() {
@@ -273,19 +307,20 @@ int main() {
     int quitter = -1;
     switch (omenu) {
         case 49:
+            system("cls");
             Aide();
             system("pause");
             jouer();
             break;
         case 50:
+            system("cls");
             jouer();
             break;
         case 57:
+            system("cls");
             printf("Voulez-vous vraimment quitter?"
                    "\n0=Oui, 1=Non");
-            do {
                 scanf("%d", &quitter);
-            }while (quitter !=49&&quitter !=50);
 
             if (quitter == 0) {
                 return 0;
