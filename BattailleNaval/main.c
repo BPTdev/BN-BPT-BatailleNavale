@@ -28,7 +28,7 @@
 #define cote 10
 
 
-int datagrille[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
+int datagrille1[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
@@ -41,21 +41,26 @@ int datagrille[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurb
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 3}
 
 };
-
-/*int choixgrille(int cotes) {
-    char fich;
+int next(int fich){
+    int resfich;
+    do {
+        resfich=fgetc(fich);
+    }while (fgetc(fich)==10);
+    return resfich;
+};
+int choixgrille(int cotes) {
     FILE *fich;
-    fich = fopen("grille\\grille1.txt", "r"); // On 'fixe' la poignée sur le fichier 'fichier.txt',
+    fopen("grille\\grille1.txt", "r"); // On 'fixe' la poignée sur le fichier 'fichier.txt',
 
     // en indiquant que l'on va lire ('r') cette fois
     int i = 0; // compteur de caractères
-    while (!feof(fich)) // Tant qu'il reste des caractères à lire
+    while (!feof((FILE *) fich)) // Tant qu'il reste des caractères à lire
     {
         for (int i = 0; i < cote; ++i) {
             for (int j = 0; j < cote; ++j) {
-                if (datagrille[i][j] == 11) {
-                    char c = fgetc(fich);   // lire un caractère
-                    datagrille[i][j] = c - '0';         // Stocker le chiffre dans le modèle
+                if (datagrille1[i][j] == 11) {
+                    char c = next(fich);   // lire un caractère
+                    datagrille1[i][j] = c - '0';         // Stocker le chiffre dans le modèle
                     i++;
                 }
             }
@@ -63,7 +68,7 @@ int datagrille[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurb
         }
     }
 }
-*/
+
 
 int menu() {
     int resmenu = 0;
@@ -77,7 +82,7 @@ int menu() {
 }
 
 int affgrille(int hauteur, int largeur) {
-    switch (datagrille[hauteur - 1][largeur - 1]) {
+    switch (datagrille1[hauteur - 1][largeur - 1]) {
         case 0:
             printf(" "); //cas standard
             break;
