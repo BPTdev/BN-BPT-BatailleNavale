@@ -22,3 +22,6 @@ Pour exécuter le programme, vous devez:
 
 1. Lancer l'éxecutable précédemment créé
 1. Suivre les instruction que le programme vous donnera
+
+## ReBuild
+Pour Rebuild l'éxecutable il faut aller dans le dossier : BatailleNaval et,<br> clicker sur main.c, cela vous premettra de l'ouvrir dans CLion.
