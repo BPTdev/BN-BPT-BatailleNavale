@@ -1,3 +1,0 @@
-"C:\Program Files (x86)\CLion\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\code_getch.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\code_getch.dir/objects.a @CMakeFiles\code_getch.dir\objects1.rsp
-C:\MinGW\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\code_getch.dir/objects.a -Wl,--no-whole-archive  -o code_getch.exe -Wl,--out-implib,libcode_getch.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\code_getch.dir\linklibs.rsp
