@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <conio.h>
+#include <time.h>
 
 
 #pragma execution_character_set("utf-8")
@@ -27,62 +28,56 @@
 
 #define cote 10
 
+int datagrille[10][10];///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
 
-int datagrille1[10][10] = {   ///bato 1= 1 / compteurbato1   bato2= 2 / compteurbato2   bato3= 3 / compteurbato3
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 2, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {1, 1, 1, 1, 0, 0, 0, 0, 0, 3},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 3}
+void shipfich() {
+    int nombrealeatoire; //nombre aléatoire
+    char c;
 
-};
-int next(int fich){
-    int resfich;
-    do {
-        resfich=fgetc(fich);
-    }while (fgetc(fich)==10);
-    return resfich;
-};
-int choixgrille(int cotes) {
-    FILE *fich;
-    fopen("grille\\grille1.txt", "r"); // On 'fixe' la poignée sur le fichier 'fichier.txt',
+    srand((unsigned) time(NULL));
+    nombrealeatoire = 1 + rand() % 4; //Choisit un nombre aléatoire entre 1 et 4
+    FILE *fichier = NULL;
+    switch (nombrealeatoire) {
+        //Choix d'une des 4 grille
+        case 1:
+            fichier = fopen("grille/Grille1.txt", "r");
+            break;
+        case 2:
+            fichier = fopen("grille/Grille2.txt", "r");
+            break;
+        case 3:
+            fichier = fopen("grille/Grille3.txt", "r");
+            break;
+        case 4:
+            fichier = fopen("grille/Grille4.txt", "r");
+            break;
+    }
 
-    // en indiquant que l'on va lire ('r') cette fois
-    int i = 0; // compteur de caractères
-    while (!feof((FILE *) fich)) // Tant qu'il reste des caractères à lire
-    {
-        for (int i = 0; i < cote; ++i) {
-            for (int j = 0; j < cote; ++j) {
-                if (datagrille1[i][j] == 11) {
-                    char c = next(fich);   // lire un caractère
-                    datagrille1[i][j] = c - '0';         // Stocker le chiffre dans le modèle
-                    i++;
-                }
-            }
-
+    // pour eviter que le retour a ligne ou tout autre caractere non souhaiter soit pris avec
+    for (int i = 0; i < cote; ++i) {
+        for (int j = 0; j < cote; ++j) {
+            do {
+                c = fgetc(fichier);
+                datagrille[i][j] = c - 48;
+            } while (c <= 32);
         }
     }
+    fclose(fichier);
 }
-
 
 int menu() {
     int resmenu = 0;
     printf("1. Aide\n"
            "2. Jouer\n"
-           "9.Quitter\n");
+           "3.Quitter\n");
     do {
         resmenu = _getch();
-    } while (resmenu != 49 && resmenu != 50 && resmenu != 57);
+    } while (resmenu != 49 && resmenu != 50 && resmenu != 51);
     return resmenu;
 }
 
 int affgrille(int hauteur, int largeur) {
-    switch (datagrille1[hauteur - 1][largeur - 1]) {
+    switch (datagrille[hauteur - 1][largeur - 1]) {
         case 0:
             printf(" "); //cas standard
             break;
@@ -181,6 +176,9 @@ void grille(int Cotes) {
 }
 
 void jouer() {
+    printf("INISTALISATION...");
+    shipfich();
+    system("cls");
     char tir[5];
     int num = 0;
     int lettre;
@@ -196,9 +194,9 @@ void jouer() {
         printf("Où voulez-vous tirer ?\n");
         printf("La lettre en premier\n");
         do {
-            tir[2]=0;
+            tir[2] = 0;
             scanf("%s", &tir);
-            if (tir[0] < 97 || tir[0] > 106 || tir[1] < 49 || tir[1] > 57 || tir[2]!=0) {
+            if (tir[0] < 97 || tir[0] > 106 || tir[1] < 49 || tir[1] > 57 || tir[2] != 0) {
                 printf("Ce n'est pas une valeur d'une case !\n");
                 printf("Où voulez-vous tirer ?\n");
                 printf("La lettre en premier\n");
@@ -310,30 +308,33 @@ int main() {
     int omenu = 0;//option menu
     omenu = menu();
     int quitter = -1;
-    switch (omenu) {
-        case 49:
-            system("cls");
-            Aide();
-            system("pause");
-            jouer();
-            break;
-        case 50:
-            system("cls");
-            jouer();
-            break;
-        case 57:
-            system("cls");
-            printf("Voulez-vous vraimment quitter?"
-                   "\n0=Oui, 1=Non");
+
+        switch (omenu) {
+            case 49:
+                system("cls");
+                Aide();
+                system("pause");
+                system("cls");
+                menu();
+                break;
+            case 50:
+                system("cls");
+                jouer();
+                break;
+            case 51:
+                system("cls");
+                printf("Voulez-vous vraimment quitter?"
+                       "\n0=Oui, 1=Non");
                 scanf("%d", &quitter);
 
-            if (quitter == 0) {
-                return 0;
-            } else if (quitter == 1) {
-                menu();
-            }
-            break;
-    }
+                if (quitter == 0) {
+                    return 0;
+                } else if (quitter == 1) {
+                    menu();
+                }
+                break;
+        }
+
 
 
     return 0;
